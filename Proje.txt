@@ -1,0 +1,24 @@
+%Embed kernel in image that is size of original image
+[h, w] = size(origimage);
+kernelimage = zeros(h,w);
+kernelimage(1:ksize, 1:ksize) = kernel;
+
+%Perform 2D FFTs
+fftimage = fft2(double(origimage));
+fftkernel = fft2(kernelimage);
+
+%Set all zero values to minimum value
+fftkernel(find(fftkernel == 0)) = 1e-6;
+
+%Multiply FFTs
+fftblurimage = fftimage.*fftkernel;
+
+%Perform Inverse 2D FFT
+blurimage = ifft2(fftblurimage);
+
+%Display Blurred Image
+figure, imagesc(blurimage)
+axis square
+title('Blurred Image')
+colormap gray
+set(gca, 'XTick', [], 'YTick', [])
