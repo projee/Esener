@@ -1,3 +1,4 @@
+
 %Embed kernel in image that is size of original image
 [h, w] = size(origimage);
 kernelimage = zeros(h,w);
@@ -22,3 +23,4 @@ axis square
 title('Blurred Image')
 colormap gray
 set(gca, 'XTick', [], 'YTick', [])
+edited
