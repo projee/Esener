@@ -22,3 +22,4 @@ axis square
 title('Blurred Image')
 colormap gray
 set(gca, 'XTick', [], 'YTick', [])
+edited
