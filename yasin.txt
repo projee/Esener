@@ -1,0 +1,48 @@
+function button_sketch_Callback(hObject, eventdata, handles)
+filename=handles.filename;
+pathname=handles.pathname;
+img=fullfile(pathname,filename);
+if ~isempty(img)
+img_en=imread(char(img));
+imgEnhanced = entropyfilt(img_en,getnhood(strel('Disk',4)));
+imgEnhanced = imgEnhanced/max(imgEnhanced(:));
+imgEnhanced = imadjust(imgEnhanced,[0.40; 0.95],[0.50; 0.00], 0.90);
+image(imgEnhanced);
+axis equal;
+axis tight;
+axis off;
+end
+
+function button_left_Callback(hObject, eventdata, handles)
+img=getimage();
+if ~isempty(img)
+img = imrotate(img,90);
+image(img);
+axis equal;
+axis tight;
+axis off;
+end
+
+function button_right_Callback(hObject, eventdata, handles)
+img=getimage();
+if ~isempty(img)
+img = imrotate(img,-90);
+image(img);
+axis equal;
+axis tight;
+axis off;
+end
+
+
+function button_background_Callback(hObject, eventdata, handles)
+global abc;
+if abc==1
+pathname='%HOMEPATH%/Desktop';
+filename='bg1.jpg';
+ha = axes('units','normalized','position',[0 0 1 1]);
+uistack(ha,'bottom');
+img=imread(filename);
+imagesc(img);
+set(ha,'handlevisibility','off','visible','off');
+abc=2;
+end
