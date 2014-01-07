@@ -1,0 +1,43 @@
+function blue_button_Callback(hObject, eventdata, handles)
+filename=handles.filename;
+pathname=handles.pathname;
+img=fullfile(pathname,filename);
+if ~isempty(img)
+img_blue=imread(char(img));
+img_blue = imadjust(img_blue,[.02 .2 0.7; .1 .7 0.8],[0.9; 0.1],0.8);
+image(img_blue);
+axis equal;
+axis tight;
+axis off;
+end
+
+
+function black_button_Callback(hObject, eventdata, handles)
+filename=handles.filename;
+pathname=handles.pathname;
+img=fullfile(pathname,filename);
+if ~isempty(img)
+img_black=imread(char(img));
+img_black = rgb2gray(img_black);
+image(img_black);
+colormap(gray(256));
+axis equal;
+axis tight;
+axis off;
+end
+
+function button_noisy_Callback(hObject, eventdata, handles)
+filename=handles.filename;
+pathname=handles.pathname;
+img=fullfile(pathname,filename);
+if ~isempty(img)
+img_r=imread(char(img));
+img_r = imnoise(img_r,'gaussian',0.02);
+image(img_r);
+axis equal;
+axis tight;
+axis off;
+end
+
+function exit_button_Callback(hObject, eventdata, handles)
+close all
