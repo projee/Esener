@@ -35,5 +35,3 @@ set(handles.orgIm,'HandleVisibility','OFF');
 function varargout = deneme30_OutputFcn(hObject, eventdata, handles) 
 varargout{1} = handles.output;
 
-
-
