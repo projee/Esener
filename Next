@@ -1,0 +1,3 @@
+PSF = fspecial('gaussian',7,10);
+Blurred = imfilter(I,PSF,'symmetric','conv');
+figure;imshow(Blurred);title('Blurred Image');
