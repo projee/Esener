@@ -1,3 +1,4 @@
+
 function red_button_Callback(hObject, eventdata, handles)
 filename=handles.filename;
 pathname=handles.pathname;
@@ -47,5 +48,5 @@ set(handles.newIm,'HandleVisibility','ON');
 axes(handles.newIm);
 imwrite(I, Name, 'jpg');
 else
-msgbox('Resim ya da Efekt Seçilmedi');
+msgbox('Resim ya da Efekt Seï¿½ilmedi');
 end
