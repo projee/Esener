@@ -1,0 +1,51 @@
+function red_button_Callback(hObject, eventdata, handles)
+filename=handles.filename;
+pathname=handles.pathname;
+img=fullfile(pathname,filename);
+if ~isempty(img)
+img_red=imread(char(img));
+img_red = imadjust(img_red,[.02 .2 0; .3 .6 1],[]);
+image(img_red);
+axis equal;
+axis tight;
+axis off;
+end
+
+function purple_button_Callback(hObject, eventdata, handles)
+filename=handles.filename;
+pathname=handles.pathname;
+img=fullfile(pathname,filename);
+if ~isempty(img)
+img_purple=imread(char(img));
+img_purple = imadjust(img_purple,[.02 .2 0; .6 .8 0.3],[]);
+image(img_purple);
+axis equal;
+axis tight;
+axis off;
+end
+
+function green_button_Callback(hObject, eventdata, handles)
+filename=handles.filename;
+pathname=handles.pathname;
+img=fullfile(pathname,filename);
+if ~isempty(img)
+img_green=imread(char(img));
+img_green = imadjust(img_green,[.02 .2 0; .6 .8 0.3],[0.9; 0.09],0.9);
+image(img_green);
+axis equal;
+axis tight;
+axis off;
+end
+
+
+function save_button_Callback(hObject, eventdata, handles)
+I=getimage();
+if ~isempty(I)
+[FileName, PathName] = uiputfile('*.jpg', 'Save As');
+Name = fullfile(PathName,FileName);
+set(handles.newIm,'HandleVisibility','ON');
+axes(handles.newIm);
+imwrite(I, Name, 'jpg');
+else
+msgbox('Resim ya da Efekt Seçilmedi');
+end
