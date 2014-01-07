@@ -36,3 +36,4 @@ function varargout = deneme30_OutputFcn(hObject, eventdata, handles)
 varargout{1} = handles.output;
 
 
+
